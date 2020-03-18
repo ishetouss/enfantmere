@@ -6,6 +6,21 @@ from .forms import CommentForm, SendMessageForm
 
 
 def index(request):
+    form = SendMessageForm()
+    if request.method == 'POST':
+        form = SendMessageForm(request.POST)
+        if form.is_valid():
+            message = SendMessage(
+                name = form.cleaned_data["name"],
+                email = form.cleaned_data["email"],
+                message = form.cleaned_data["message"],
+
+        )
+        message.save()
+    context = {
+        "form": form,
+    }
+
     return render(request, 'index.html')
 
 
@@ -33,8 +48,23 @@ def contact(request):
 
 def blog(request):
     blogs = Blog.objects.all().order_by('-created')
+    
+    form = SendMessageForm()
+    if request.method == 'POST':
+        form = SendMessageForm(request.POST)
+        if form.is_valid():
+            message = SendMessage(
+                name = form.cleaned_data["name"],
+                email = form.cleaned_data["email"],
+                message = form.cleaned_data["message"],
+
+        )
+        message.save()
+
+    
     context ={
-        'blogs' : blogs
+        'blogs' : blogs,
+        "form": form,
     }
     return render(request, 'blog.html', context)
 
@@ -81,3 +111,7 @@ def contact(request):
 
     return render(request, 'contact.html', context)
 
+
+
+def home(request):
+    return render(request, 'home.html')
