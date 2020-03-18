@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+  
+  
+              	<!-- Page info section -->
+	<section class="page-info-section set-bg" data-setbg="img/bg.jpg" style="background-image: url('{% static 'img/main/1.jpg' %}');">
+		<div class="page-info-content">
+			<div class="pi-inner">
+				<div class="container">
+					<h2>Contact us</h2>
+					<div class="site-breadcrumb">
+						<a href="#">Home</a> <i class="fa fa-angle-right"></i>
+						<span>Contact us</span>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+
+    <!-- contact -->
+
+    
+	<!-- Footer top section -->
+	<section class="footer-top-contact-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 footer-top-content">
+					<div class="section-title title-left">
+						<h2>Contact Us</h2>
+					</div>
+					<h3>Rulindo mukoto, RWANDA</h3>
+					<p>207 Park Avenue New York, NY 90210</p>
+					<p><span>Email:</span> info@colorlib.com</p>
+					<h4>Phone:</h4>
+					<h5>+0780646981</h5>
+				</div>
+				<div class="col-md-6">
+					<div class="section-title title-left">
+						<h2>CONTACT FORM</h2>
+					</div>
+					<form class="contact-form">
+						<div class="row">
+							<div class="col-sm-6">
+								{{ form.name }}
+							</div>
+							<div class="col-sm-6">
+								{{ form.email }}
+							</div>
+							<div class="col-sm-12">
+								{{form.message }}
+								<button type="submit" class="btn btn-large color text-white">Send message</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+  
+{% endblock  %}
