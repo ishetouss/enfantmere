@@ -13,7 +13,23 @@ def about(request):
     return render(request, 'about.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    
+    form = SendMessageForm()
+    if request.method == 'POST':
+        form = SendMessageForm(request.POST)
+        if form.is_valid():
+            message = SendMessage(
+                name = form.cleaned_data["name"],
+                email = form.cleaned_data["email"],
+                message = form.cleaned_data["message"],
+
+        )
+        message.save()
+    context = {
+        "form": form,
+    }
+
+    return render(request, 'contact.html', context)
 
 def blog(request):
     blogs = Blog.objects.all().order_by('-created')
